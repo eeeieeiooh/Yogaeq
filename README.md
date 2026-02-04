@@ -1,6 +1,6 @@
 # Your Hugo Blog
 
-A minimal, clean blog inspired by William Jansson's design. Write in Markdown, deploy anywhere.
+A minimal, clean blog. Write in Markdown, deploy anywhere.
 
 ## Quick Start
 
