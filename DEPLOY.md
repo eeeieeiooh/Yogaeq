@@ -29,7 +29,22 @@ Replace `ghp_your_token_here` with your actual token.
   ./deploy.sh
   ```
 
-After a push, GitHub Actions builds and deploys to **https://eeeieeiooh.github.io/myblog/** (and you must have **Settings → Pages → Source: GitHub Actions**).
+After a push, GitHub Actions builds and deploys to your Pages URL (and you must have **Settings → Pages → Source: GitHub Actions**).
+
+## If workflow runs keep failing (red X in Actions)
+
+1. **Set Pages source to GitHub Actions**  
+   - Open your **repo** on GitHub (e.g. `https://github.com/eeeieeiooh/myblog`).
+   - Click **Settings** (tab next to Insights—you need admin/maintainer access).
+   - In the **left sidebar**, find **“Code and automation”** and click **Pages**. (If you don’t see “Code and automation”, scroll the sidebar; Pages is under that section.)
+   - On the Pages screen you should see a **Source** (or “Build and deployment” then Source). Set it to **GitHub Actions**, not “Deploy from a branch”. Save.
+   - If you don’t see a Source option at all, your plan or org may restrict Pages; check [GitHub Pages availability](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#about-github-pages).
+
+2. **See why a run failed**  
+   Open **Actions** → click a failed run → open the **build** or **deploy** job. The red step shows the error (e.g. missing CNAME, Hugo error, or “No such job” if Pages source was wrong).
+
+3. **Re-run after fixing**  
+   After changing the workflow file or Pages settings, push a small commit or use **Actions** → open the workflow → **Re-run all jobs**.
 
 ## If you see "Password authentication is not supported"
 
