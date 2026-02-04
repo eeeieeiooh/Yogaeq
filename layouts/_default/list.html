@@ -6,13 +6,22 @@
 
 <main>
     <ul class="posts-list">
-        {{ $posts := where .Site.RegularPages "Type" "posts" }}
+        {{ $posts := .CurrentSection.RegularPages }}
+        {{ if and (eq .Section "posts") (not $posts) }}
+            {{/* /posts/ root: aggregate all years */}}
+            {{ $posts = slice }}
+            {{ range .CurrentSection.Sections }}
+                {{ range .RegularPages }}
+                    {{ $posts = $posts | append . }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        {{ if not $posts }}{{ $posts = slice }}{{ end }}
+        {{ $posts = sort $posts "Date" "desc" }}
         {{ $total := len $posts }}
-        {{ $show := $posts.ByDate.Reverse }}
+        {{ $show := $posts }}
         {{ $limit := 0 }}
-        {{ if eq .Section "posts" }}
-            {{/* V (posts) page: show all posts */}}
-        {{ else }}
+        {{ if ne .Section "posts" }}
             {{ $limit = default 11 .Site.Params.postsLimit }}
             {{ if gt $total $limit }}
                 {{ $show = first $limit $show }}
@@ -26,21 +35,25 @@
         {{ end }}
         {{ if ne .Section "posts" }}
         <li class="posts-more">
-            <span class="post-number"><a href="/posts/">→</a></span>
+            <span class="post-number"><a class="arrow-link" href="/posts/">→</a></span>
         </li>
         {{ end }}
     </ul>
     {{ if ne .Section "posts" }}
-    {{ $posts := where .Site.RegularPages "Type" "posts" }}
-    {{ $total := len $posts }}
+    {{ $allPosts := where .Site.RegularPages "Type" "posts" }}
+    {{ $totalAll := len $allPosts }}
     {{ $limit := default 11 .Site.Params.postsLimit }}
-    {{ if gt $total $limit }}
+    {{ if gt $totalAll $limit }}
     <p class="more-to-release">{{ default "More to release the rest." .Site.Params.moreToReleaseText }}</p>
     {{ end }}
     {{ end }}
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer{{ if eq .Section "posts" }} site-footer--posts{{ end }}">
+    {{ if eq .Section "posts" }}
+    <a class="arrow-link" href="/">←</a>
+    {{ else }}
     <a href="/about/">Info</a>
+    {{ end }}
 </footer>
 {{ end }}

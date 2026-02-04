@@ -1,0 +1,23 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main>
+    <ul class="posts-list">
+        {{ $posts := sort .Pages "Date" "desc" }}
+        {{ $total := len $posts }}
+        {{ range $index, $post := $posts }}
+        <li>
+            <span class="post-number">{{ sub $total $index }}.</span>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</main>
+
+<footer class="site-footer site-footer--posts">
+    <a class="arrow-link" href="/tags/">← Tags</a>
+</footer>
+{{ end }}

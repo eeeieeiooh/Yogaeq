@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    {{ with .Site.Home.OutputFormats.Get "rss" -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+    {{- end }}
     <style>
         * {
             margin: 0;
@@ -89,6 +92,11 @@
             font-size: 1em;
         }
 
+        .site-footer--posts {
+            margin-top: 1.5rem;
+            padding-top: 0;
+        }
+
         .site-footer a {
             color: #111;
             text-decoration: underline;
@@ -106,6 +114,11 @@
             font-style: normal;
         }
 
+        .arrow-link,
+        .arrow-link:hover {
+            text-decoration: none;
+        }
+
         article {
             margin-top: 2.5rem;
         }
@@ -116,14 +129,14 @@
 
         article h2 {
             font-size: 1.1rem;
-            font-weight: 400;
+            font-weight: 600;
             margin-top: 1.75em;
             margin-bottom: 0.5em;
         }
 
         article h3 {
             font-size: 1em;
-            font-weight: 400;
+            font-weight: 600;
             margin-top: 1.35em;
             margin-bottom: 0.4em;
         }
@@ -150,7 +163,7 @@
 
         .page-title {
             font-size: 1.1rem;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0.35rem;
         }
 
@@ -158,8 +171,14 @@
             display: none;
         }
 
+        .post-date {
+            margin-top: 2.5rem;
+            font-size: 0.9em;
+            color: #444;
+        }
+
         .back-link {
-            margin-top: 3.5rem;
+            margin-top: 1.5rem;
             font-size: 1em;
         }
 
@@ -175,17 +194,15 @@
             text-decoration-style: solid;
         }
 
-        /* Post outline (left sidebar) */
+        /* Post outline: fixed in left margin; name + main content stay centered */
         main.post-with-outline {
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
+            display: block;
         }
 
         .post-outline {
-            flex-shrink: 0;
+            position: fixed;
+            left: calc(50% - 21em - 11em - 2.5rem);
             width: 11em;
-            position: sticky;
             top: 2rem;
         }
 
@@ -203,13 +220,13 @@
 
         .outline-nav #TableOfContents a {
             color: #111;
-            text-decoration: underline;
-            text-decoration-style: dotted;
-            text-underline-offset: 3px;
+            text-decoration: none;
         }
 
         .outline-nav #TableOfContents a:hover {
-            text-decoration-style: solid;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 3px;
         }
 
         .outline-nav #TableOfContents ul ul {
@@ -217,11 +234,6 @@
             margin-left: 0.75em;
             padding-left: 0;
             border-left: 1px solid #ccc;
-        }
-
-        .post-content {
-            flex: 1;
-            min-width: 0;
         }
 
         /* Hide outline after user scrolls down */
@@ -254,6 +266,13 @@
             border-top: 1px solid #111;
         }
 
+        mark.highlight,
+        .highlight {
+            background-color: #fef9c3;
+            color: inherit;
+            padding: 0 0.15em;
+        }
+
         code {
             font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
             font-size: 0.95em;
@@ -266,6 +285,141 @@
 
         pre code {
             font-size: 0.9em;
+        }
+
+        .photos-intro {
+            margin-bottom: 2rem;
+        }
+
+        .photos-list {
+            margin: 2rem 0;
+        }
+
+        .photos-item {
+            margin: 0 0 2.5rem 0;
+        }
+
+        .photos-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .photos-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: bottom;
+        }
+
+        .photos-thumb {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .photos-thumb img {
+            pointer-events: none;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox[hidden] {
+            display: none !important;
+        }
+
+        .lightbox-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 0;
+        }
+
+        .lightbox-content {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: calc(100vh - 4rem);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            z-index: 10;
+            padding: 0.5rem;
+            border: none;
+            background: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            font-weight: 400;
+            cursor: pointer;
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            color: #fff;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 3px;
+        }
+
+        .lightbox-close {
+            top: 1rem;
+            right: 1rem;
+            min-width: 2rem;
+            min-height: 2rem;
+        }
+
+        .lightbox-prev {
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .photo-journal-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            vertical-align: bottom;
+        }
+
+        .photos-empty {
+            color: #444;
+            font-size: 0.95em;
+            margin: 2rem 0;
         }
 
         @media (max-width: 600px) {
@@ -299,6 +453,12 @@
                 margin: 0;
                 padding: 0 0 1.25rem 1.25rem;
             }
+
+            .site-footer--posts {
+                position: static;
+                margin-top: 1.5rem;
+                padding: 0;
+            }
         }
 
     </style>
@@ -308,7 +468,22 @@
     <script>
         (function() {
             var main = document.querySelector('main.post-with-outline');
-            if (!main || !main.querySelector('.post-outline')) return;
+            var outline = main && main.querySelector('.post-outline');
+            if (!main || !outline) return;
+
+            var heading = document.querySelector('.post-content .page-title');
+            function alignOutline() {
+                if (heading) {
+                    var top = heading.getBoundingClientRect().top;
+                    outline.style.top = Math.max(8, top) + 'px';
+                }
+            }
+            if (heading) {
+                alignOutline();
+                window.addEventListener('resize', alignOutline);
+                window.addEventListener('load', alignOutline);
+            }
+
             var scrollThreshold = 140;
             function update() {
                 main.classList.toggle('scrolled', window.scrollY > scrollThreshold);

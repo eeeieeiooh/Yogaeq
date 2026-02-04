@@ -16,11 +16,13 @@
         <h2 class="page-title">{{ .Title }}</h2>
 
         <article>
-            {{ .Content }}
+            {{ partial "highlight-content.html" (dict "Content" .Content) }}
         </article>
 
+        <p class="post-date">{{ .Date.Format "2006-01-02" }}</p>
+
         <div class="back-link">
-            <a href="/posts/">←</a>
+            <a class="arrow-link" href="/posts/">←</a>
         </div>
     </div>
 </main>

@@ -1,0 +1,37 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main>
+    <h2 class="page-title">{{ .Title }}</h2>
+
+    {{ if .Content }}
+    <article class="photos-intro">
+        {{ partial "highlight-content.html" (dict "Content" .Content) }}
+    </article>
+    {{ end }}
+
+    <ul class="posts-list">
+        {{ $pages := .Pages.ByDate.Reverse }}
+        {{ $total := len $pages }}
+        {{ range $index, $p := $pages }}
+        <li>
+            <span class="post-number">{{ sub $total $index }}.</span>
+            <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+
+    <div class="back-link">
+        <a class="arrow-link" href="/">←</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <a href="/about/">Info</a>
+    <span class="sep">·</span>
+    <a href="/photos/">Photos</a>
+</footer>
+{{ end }}

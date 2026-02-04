@@ -8,15 +8,11 @@
     <h2 class="page-title">{{ .Title }}</h2>
 
     <article>
-        {{ .Content }}
+        {{ partial "highlight-content.html" (dict "Content" .Content) }}
     </article>
 
     <div class="back-link">
-        <a href="/">←</a>
+        <a class="arrow-link" href="/">←</a>
     </div>
 </main>
-
-<footer class="site-footer">
-    <a href="/about/">Info</a>
-</footer>
 {{ end }}

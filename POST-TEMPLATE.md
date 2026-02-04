@@ -63,6 +63,7 @@ Your blog uses **Goldmark** (standard Markdown). All of this works:
 | **Heading** | `## Heading` | Subheading (use `#` for title, `##` for sections) |
 | **List** | `- item` or `1. item` | Bullet or numbered list |
 | **Code** | `` `inline` `` or ` ``` ` fenced block | Code |
+| **Highlight** | `==text==` | <mark style="background:#fef9c3">Yellow highlight</mark> |
 | **Line break** | Two spaces at end of line, or a blank line | New line / new paragraph |
 
 **Callout-style notes:** Use a blockquote with a bold label:
