@@ -1,23 +1,27 @@
 {{ define "main" }}
 <header>
     <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
-    <hr class="rule">
+    <p class="rule">—</p>
 </header>
 
-<main>
-    <h2 class="page-title">{{ .Title }}</h2>
-    <div class="meta">{{ .Date.Format "January 2, 2006" }}</div>
+<main class="post-with-outline">
+    {{ if .TableOfContents }}
+    <aside class="post-outline" aria-label="Outline">
+        <nav class="outline-nav">
+            {{ .TableOfContents }}
+        </nav>
+    </aside>
+    {{ end }}
+    <div class="post-content">
+        <h2 class="page-title">{{ .Title }}</h2>
 
-    <article>
-        {{ .Content }}
-    </article>
+        <article>
+            {{ .Content }}
+        </article>
 
-    <div class="back-link">
-        <a href="/posts/">←</a>
+        <div class="back-link">
+            <a href="/posts/">←</a>
+        </div>
     </div>
 </main>
-
-<footer class="site-footer">
-    <a href="/about/">Info</a>
-</footer>
 {{ end }}

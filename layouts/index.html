@@ -1,7 +1,7 @@
 {{ define "main" }}
 <header>
     <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
-    <hr class="rule">
+    <p class="rule">—</p>
 </header>
 
 <main>
@@ -19,9 +19,8 @@
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
         {{ end }}
-        <li>
-            <span class="post-number"></span>
-            <a href="/posts/">v</a>
+        <li class="posts-more">
+            <span class="post-number"><a href="/posts/">→</a></span>
         </li>
     </ul>
 </main>

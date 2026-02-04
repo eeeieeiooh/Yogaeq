@@ -17,34 +17,34 @@
             font-size: 0.8125rem;
             line-height: 1.35;
             color: #111;
-            background-color: #f5f4f0;
+            background-color: #faf9f6;
             max-width: 42em;
             margin: 0 auto;
             padding: 5rem 2rem;
         }
 
         .site-title {
-            font-size: 1.15rem;
+            font-size: 0.9375rem;
             font-weight: 400;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .site-title a {
             color: #111;
+            text-decoration: none;
+        }
+
+        .site-title a:hover {
             text-decoration: underline;
             text-decoration-style: dotted;
             text-underline-offset: 3px;
         }
 
-        .site-title a:hover {
-            text-decoration-style: solid;
-        }
-
         .rule {
-            margin: 2rem 0 2.5rem;
-            border: none;
-            border-top: 1px solid #111;
-            width: 1.25rem;
+            margin: 0.5rem 0 1.5rem;
+            font-size: 1em;
+            font-weight: 400;
+            color: #111;
         }
 
         .posts-list {
@@ -54,6 +54,10 @@
         .posts-list li {
             margin-bottom: 0.35rem;
             font-size: 1em;
+        }
+
+        .posts-list li.posts-more {
+            margin-top: 1rem;
         }
 
         .posts-list a {
@@ -68,10 +72,15 @@
             text-decoration-style: solid;
         }
 
+        .posts-list .post-number a {
+            font-style: italic;
+        }
+
         .post-number {
             display: inline-block;
             min-width: 2.5em;
             font-style: normal;
+            text-align: left;
         }
 
         .site-footer {
@@ -146,9 +155,7 @@
         }
 
         .meta {
-            font-size: 0.95em;
-            margin-bottom: 2.25rem;
-            color: #444;
+            display: none;
         }
 
         .back-link {
@@ -168,11 +175,83 @@
             text-decoration-style: solid;
         }
 
+        /* Post outline (left sidebar) */
+        main.post-with-outline {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .post-outline {
+            flex-shrink: 0;
+            width: 11em;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .outline-nav {
+            font-size: 0.9em;
+        }
+
+        .outline-nav #TableOfContents ul {
+            list-style: none;
+        }
+
+        .outline-nav #TableOfContents li {
+            margin-bottom: 0.35rem;
+        }
+
+        .outline-nav #TableOfContents a {
+            color: #111;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 3px;
+        }
+
+        .outline-nav #TableOfContents a:hover {
+            text-decoration-style: solid;
+        }
+
+        .outline-nav #TableOfContents ul ul {
+            margin-top: 0.25rem;
+            margin-left: 0.75em;
+            padding-left: 0;
+            border-left: 1px solid #ccc;
+        }
+
+        .post-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Hide outline after user scrolls down */
+        main.post-with-outline.scrolled .post-outline {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .post-outline {
+            transition: opacity 0.25s ease;
+        }
+
+        @media (max-width: 700px) {
+            .post-outline {
+                display: none;
+            }
+        }
+
         blockquote {
             margin: 1.25em 0;
             padding-left: 1.25em;
             border-left: 2px solid #111;
             font-style: italic;
+        }
+
+        article hr {
+            margin: 2em 0;
+            border: none;
+            border-top: 1px solid #111;
         }
 
         code {
@@ -226,5 +305,17 @@
 </head>
 <body>
     {{ block "main" . }}{{ end }}
+    <script>
+        (function() {
+            var main = document.querySelector('main.post-with-outline');
+            if (!main || !main.querySelector('.post-outline')) return;
+            var scrollThreshold = 140;
+            function update() {
+                main.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+    </script>
 </body>
 </html>
