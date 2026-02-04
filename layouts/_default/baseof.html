@@ -114,6 +114,74 @@
             font-style: normal;
         }
 
+        .subscribe-section {
+            margin-top: 3rem;
+            font-size: 1em;
+        }
+
+        .subscribe-label {
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .subscribe-input {
+            font-family: inherit;
+            font-size: 1em;
+            padding: 0.35rem 0.5rem;
+            border: 1px solid #ccc;
+            background: #fff;
+            color: #111;
+            min-width: 14em;
+        }
+
+        .subscribe-input::placeholder {
+            color: #888;
+        }
+
+        .subscribe-input:focus {
+            outline: none;
+            border-color: #111;
+        }
+
+        .subscribe-button {
+            font-family: inherit;
+            font-size: 1em;
+            padding: 0.35rem 0.75rem;
+            background: #111;
+            color: #faf9f6;
+            border: none;
+            cursor: pointer;
+        }
+
+        .subscribe-button:hover {
+            background: #333;
+        }
+
+        .subscribe-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .subscribe-message {
+            margin-top: 0.5rem;
+            font-size: 0.95em;
+        }
+
+        .subscribe-message--ok {
+            color: #1a5f1a;
+        }
+
+        .subscribe-message--err {
+            color: #8b2e2e;
+        }
+
         .arrow-link,
         .arrow-link:hover {
             text-decoration: none;
