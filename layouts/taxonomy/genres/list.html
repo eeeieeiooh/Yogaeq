@@ -1,0 +1,31 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main>
+    <h2 class="page-title">Genres</h2>
+    <ul class="posts-list library-list">
+        {{ range .Data.Terms.ByCount }}
+        <li>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+            <span class="library-list-meta"> ({{ .Count }})</span>
+        </li>
+        {{ end }}
+    </ul>
+    <div class="back-link">
+        <a class="arrow-link" href="/library/">← Library</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <a href="/about/">Info</a>
+    <span class="sep">·</span>
+    <a href="/library/">Library</a>
+    <span class="sep">·</span>
+    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
+    <span class="sep">·</span>
+    <a href="/practices/">Practices</a>
+</footer>
+{{ end }}

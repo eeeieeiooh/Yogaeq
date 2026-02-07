@@ -1,0 +1,5 @@
+{{- $title := .Title -}}
+{{- with .File -}}
+  {{- $title = .ContentBaseName -}}
+{{- end -}}
+{{- $title -}}

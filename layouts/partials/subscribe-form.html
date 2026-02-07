@@ -1,7 +1,7 @@
-{{ $endpoint := .Site.Params.subscribeFormEndpoint }}
-{{ if $endpoint }}
+{{ $endpoint := .Site.Params.subscribeFormEndpoint | default "" }}
 <section class="subscribe-section" aria-label="Email subscription">
     <p class="subscribe-label">Subscribe for updates</p>
+    <p class="subscribe-info">No spam. Unsubscribe anytime.</p>
     <form class="subscribe-form" action="{{ $endpoint }}" method="POST" data-subscribe-form>
         <input type="email" name="email" required placeholder="you@example.com" class="subscribe-input" aria-label="Email address">
         <button type="submit" class="subscribe-button">Subscribe</button>
@@ -41,4 +41,3 @@
         })();
     </script>
 </section>
-{{ end }}

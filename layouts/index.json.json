@@ -1,0 +1,12 @@
+[
+{{ $pages := .Site.RegularPages }}
+{{ $len := len $pages }}
+{{ range $i, $p := $pages }}
+  {{ $title := $p.Title }}{{ with $p.File }}{{ $title = .ContentBaseName }}{{ end }}
+  {
+    "title": {{ $title | jsonify }},
+    "url": {{ $p.Permalink | jsonify }},
+    "content": {{ $p.Plain | jsonify }}
+  }{{ if lt (add $i 1) $len }},{{ end }}
+{{ end }}
+]

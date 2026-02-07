@@ -17,6 +17,10 @@
             {{ end }}
         {{ end }}
         {{ if not $posts }}{{ $posts = slice }}{{ end }}
+        {{ if eq .Section "posts" }}
+            {{ $now := now }}
+            {{ $posts = where $posts "Date" "le" $now }}
+        {{ end }}
         {{ $posts = sort $posts "Date" "desc" }}
         {{ $total := len $posts }}
         {{ $show := $posts }}
@@ -30,7 +34,7 @@
         {{ range $index, $post := $show }}
         <li>
             <span class="post-number">{{ sub $total $index }}.</span>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
         </li>
         {{ end }}
         {{ if ne .Section "posts" }}
@@ -39,14 +43,6 @@
         </li>
         {{ end }}
     </ul>
-    {{ if ne .Section "posts" }}
-    {{ $allPosts := where .Site.RegularPages "Type" "posts" }}
-    {{ $totalAll := len $allPosts }}
-    {{ $limit := default 11 .Site.Params.postsLimit }}
-    {{ if gt $totalAll $limit }}
-    <p class="more-to-release">{{ default "More to release the rest." .Site.Params.moreToReleaseText }}</p>
-    {{ end }}
-    {{ end }}
 </main>
 
 <footer class="site-footer{{ if eq .Section "posts" }} site-footer--posts{{ end }}">

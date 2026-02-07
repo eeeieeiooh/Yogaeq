@@ -1,0 +1,243 @@
+{
+  "main": {
+    "id": "81f6eabcdc1172bb",
+    "type": "split",
+    "children": [
+      {
+        "id": "873be103848dd41f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e6bd233625f9302e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "about.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "about"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b87a3bf2dc72eb58",
+    "type": "split",
+    "children": [
+      {
+        "id": "3eb29546971f1fd6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a31bc8ad65f72654",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byCreatedTime",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "858a5a1bb3d7fb03",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "7be9a4934dfe43b0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7c86a55070faeb5c",
+    "type": "split",
+    "children": [
+      {
+        "id": "e8cb6f2dbc3daa15",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "55ddd98aff6d88c1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "posts/2026/Different.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Different"
+            }
+          },
+          {
+            "id": "18a0844914214117",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "about.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from about"
+            }
+          },
+          {
+            "id": "7447d72a8925478c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "80ffba98ec604499",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "9b8eeaa94fdce220",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "about.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of about"
+            }
+          },
+          {
+            "id": "2a55849080a1d645",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "posts/2026/Different.md"
+              },
+              "icon": "lucide-info",
+              "title": "File properties for Different"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "omnisearch:Omnisearch": false
+    }
+  },
+  "active": "e6bd233625f9302e",
+  "lastOpenFiles": [
+    "posts/2026/Compulsive.md",
+    "posts/2026/Karma.md",
+    "posts/2026/Preferences.md",
+    "posts/2026/84 Asanas.md",
+    "practices/sample-flow.md",
+    "library/Meditations from the Mat.md",
+    "library/The Bhagavad Gita.md",
+    "library/Yoga Mala.md",
+    "library/Bringing Yoga to Life.md",
+    "library/Autobiography of a Yogi.md",
+    "library/The Heart of Yoga.md",
+    "library/Light on Yoga.md",
+    "library/_index.md",
+    "library/The Yoga Sutras of Patanjali.md",
+    "asanas/Uttana Shavasana.md",
+    "start.md",
+    "practices/images/README.txt",
+    "asanas/images/README.txt",
+    "practices/images",
+    "asanas/images",
+    "asanas/Pincha Mayurasana.md",
+    "asanas/Astavakrasana.md",
+    "asanas/Ganda Bherundasana.md",
+    "asanas/Upavistha Konasana.md",
+    "asanas/Baddha Konasana.md",
+    "asanas/Adho Mukha Vrksasana.md",
+    "asanas/Tittibhasana.md",
+    "asanas/Kurmasana.md",
+    "asanas/Anantasana.md",
+    "asanas/Parighasana.md",
+    "practices",
+    "asanas",
+    "poetry",
+    "newsletters",
+    "images/Spider on Drugs.jpg",
+    "images/DD-COMPOSITE-SPIDERS-ON-DRUGS1-3464684663.jpg",
+    "images/README.txt",
+    "images",
+    "library/steal-like-an-artist/Screenshot 2026-02-04 at 11.13.41 AM.png",
+    "photos/belief-2025-11/23410021 copy.jpg",
+    "photos/india-2025-11/23410001 copy.jpg"
+  ]
+}

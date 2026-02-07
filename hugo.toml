@@ -1,10 +1,21 @@
-baseURL = "https://devonhwilson.com/"
+baseURL = "https://yogaiq.example.com/"
 languageCode = "en-us"
-title = "Devon Wilson"
-contentDir = "Blog"
+title = "YogaIQ"
+contentDir = "YogaIQ"
+
+[module]
+  [[module.mounts]]
+    source = "YogaIQ/images"
+    target = "static/images"
+  [[module.mounts]]
+    source = "YogaIQ/asanas/images"
+    target = "static/asanas/images"
+  [[module.mounts]]
+    source = "YogaIQ/practices/images"
+    target = "static/practices/images"
 
 [params]
-  description = "I write about technology, creativity, and living intentionally."
+  description = "Yoga notes, practice, and reflection."
   author = "Devon Wilson"
   # Show this many posts on home; V (posts page) shows all. If total > this, home shows "more to release".
   postsLimit = 11
@@ -18,11 +29,19 @@ contentDir = "Blog"
       unsafe = true
 
 [outputs]
-  home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON"]
 
 [services.rss]
   limit = 50
 
+[taxonomies]
+  tag = "tags"
+  genre = "genres"
+
 [permalinks]
   # :slug works in Hugo 0.140+; :contentbasename requires 0.144+
   posts = "/posts/:slug/"
+  library = "/library/:slug/"
+  asanas = "/asanas/:slug/"
+  practices = "/practices/:slug/"
+  newsletters = "/newsletters/:slug/"

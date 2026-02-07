@@ -7,6 +7,7 @@
 <main>
     <ul class="posts-list">
         {{ $terms := .Data.Terms.ByCount }}
+        {{ if not $terms }}{{ with index .Site.Taxonomies .Data.Plural }}{{ $terms = .ByCount }}{{ end }}{{ end }}
         {{ range $terms }}
         <li>
             <span class="post-number">{{ .Count }}.</span>

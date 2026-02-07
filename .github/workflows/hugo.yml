@@ -36,10 +36,10 @@ jobs:
           extended: true
       - name: Show Hugo version
         run: hugo version
-      - name: Verify content dir (hugo.toml contentDir = Blog)
+      - name: Verify content dir (hugo.toml contentDir = YogaIQ)
         run: |
           ls -la
-          test -d Blog && echo "Blog/ exists" && ls -la Blog/ || (echo "ERROR: Blog/ missing (contentDir in hugo.toml)" && exit 1)
+          test -d YogaIQ && echo "YogaIQ/ exists" && ls -la YogaIQ/ || (echo "ERROR: YogaIQ/ missing (contentDir in hugo.toml)" && exit 1)
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4

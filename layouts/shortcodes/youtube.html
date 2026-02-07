@@ -1,0 +1,14 @@
+{{ $src := .Get 0 }}
+{{ $id := "" }}
+{{ if hasPrefix $src "https://www.youtube.com/watch?v=" }}
+  {{ $id = (index (split (replace $src "https://www.youtube.com/watch?v=" "") "&") 0) }}
+{{ else if hasPrefix $src "https://youtube.com/watch?v=" }}
+  {{ $id = (index (split (replace $src "https://youtube.com/watch?v=" "") "&") 0) }}
+{{ else if hasPrefix $src "https://youtu.be/" }}
+  {{ $id = (index (split (replace $src "https://youtu.be/" "") "?") 0) }}
+{{ else }}
+  {{ $id = $src }}
+{{ end }}
+<div class="video-embed video-embed--youtube">
+  <iframe src="https://www.youtube.com/embed/{{ $id }}" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

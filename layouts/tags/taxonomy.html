@@ -1,0 +1,22 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main>
+    <ul class="posts-list">
+        {{ $terms := .Site.Taxonomies.tags.ByCount }}
+        {{ range $terms }}
+        <li>
+            <span class="post-number">{{ .Count }}.</span>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</main>
+
+<footer class="site-footer">
+    <a class="arrow-link" href="/">←</a>
+</footer>
+{{ end }}

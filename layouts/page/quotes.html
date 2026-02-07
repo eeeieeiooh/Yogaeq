@@ -1,0 +1,61 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main>
+    <h2 class="page-title">{{ .Title }}</h2>
+
+    {{ if .Content }}
+    <article class="quotes-intro">
+        {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
+    </article>
+    {{ end }}
+
+    {{ $now := now }}
+    {{ $posts := where (where .Site.RegularPages "Type" "posts") "Date" "le" $now }}
+    {{ $posts = $posts.ByDate.Reverse }}
+    <ul class="quotes-list">
+        {{ range $posts }}
+        {{ $post := . }}
+        {{ $raw := .RawContent }}
+        {{ $lines := split $raw "\n" }}
+        {{ range $lines }}
+        {{ $trimmed := trim . " \t\r" }}
+        {{ if and (hasPrefix $trimmed ">") (gt (len $trimmed) 1) }}
+        {{ $quote := trim (replace $trimmed ">" "" 1) " " }}
+        {{ if gt (len $quote) 0 }}
+        <li class="quote-item">
+            <blockquote class="quote-text">{{ $quote | markdownify }}</blockquote>
+            <cite class="quote-source">— <a href="{{ $post.RelPermalink }}">{{ partial "page-title.html" $post }}</a></cite>
+        </li>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        {{ end }}
+    </ul>
+
+    <div class="back-link">
+        <a class="arrow-link" href="/">←</a>
+    </div>
+</main>
+
+<footer class="site-footer site-footer--posts">
+    <a href="/tags/">Tags</a>
+    <span class="sep">·</span>
+    <a href="/library/">Library</a>
+    <span class="sep">·</span>
+    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
+    <span class="sep">·</span>
+    <a href="/practices/">Practices</a>
+    <span class="sep">·</span>
+    <a href="/quotes/">Quotes</a>
+    <span class="sep">·</span>
+    <a href="/newsletters/">Newsletters</a>
+    <span class="sep">·</span>
+    <a href="/subscribe/">Subscribe</a>
+    <span class="sep">·</span>
+    <a href="/index.xml">RSS</a>
+</footer>
+{{ end }}

@@ -1,0 +1,38 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <hr class="rule">
+</header>
+
+<main>
+    <h2 class="page-title">{{ .Title }}</h2>
+
+    <article>
+        {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
+    </article>
+
+    <footer class="site-footer site-footer--posts">
+        <a href="/tags/">Tags</a>
+        <span class="sep">·</span>
+        <a href="/library/">Library</a>
+        <span class="sep">·</span>
+        <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
+        <span class="sep">·</span>
+        <a href="/practices/">Practices</a>
+        <span class="sep">·</span>
+        <a href="/poetry/">Poetry</a>
+        <span class="sep">·</span>
+        <a href="/quotes/">Quotes</a>
+        <span class="sep">·</span>
+        <a href="/newsletters/">Newsletters</a>
+        <span class="sep">·</span>
+        <a href="/subscribe/">Subscribe</a>
+        <span class="sep">·</span>
+        <a href="/index.xml">RSS</a>
+    </footer>
+
+    <div class="back-link">
+        <a class="arrow-link" href="/">←</a>
+    </div>
+</main>
+{{ end }}

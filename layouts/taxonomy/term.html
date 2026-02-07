@@ -11,7 +11,7 @@
         {{ range $index, $post := $posts }}
         <li>
             <span class="post-number">{{ sub $total $index }}.</span>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
         </li>
         {{ end }}
     </ul>

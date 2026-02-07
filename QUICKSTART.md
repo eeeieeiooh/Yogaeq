@@ -48,14 +48,12 @@ hugo new content/posts/my-first-post.md
 ```
 
 ### Option B: Create file manually
-Create `content/posts/my-first-post.md` with:
+Create `YogaIQ/posts/2026/my-first-post.md` with (title comes from the filename):
 
 ```markdown
 ---
-title: "My First Post"
 date: 2025-02-03
 draft: false
-weight: 6
 ---
 
 This is my first post!

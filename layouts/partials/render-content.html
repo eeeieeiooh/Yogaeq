@@ -1,0 +1,45 @@
+{{ $page := .Page }}
+{{ $raw := default "" .RawContent }}
+{{/* Ensure --- (horizontal rule) is followed by a blank line so text below doesn't cause parse errors */}}
+{{ $raw = replaceRE `(\n---\s*\n)([^\n])` "$1\n$2" $raw }}
+{{/* Obsidian-style images: ![[file.jpg]] or ![[file.jpg|alt text]] → section images or /images/ */}}
+{{ $imgPattern := `!\[\[([^\]|]+)(?:\|([^\]]+))?\]\]` }}
+{{ range findRESubmatch $imgPattern $raw }}
+  {{ $full := index . 0 }}
+  {{ $file := trim (index . 1) " " }}
+  {{ $alt := trim (index . 2) " " }}
+  {{ $path := "/images/" }}
+  {{ if eq $page.Section "asanas" }}{{ $path = "/asanas/images/" }}{{ else if eq $page.Section "practices" }}{{ $path = "/practices/images/" }}{{ end }}
+  {{ $path = printf "%s%s" $path (replace $file " " "%20") }}
+  {{ $img := printf "![%s](%s)" $alt $path }}
+  {{ $raw = replace $raw $full $img 1 }}
+{{ end }}
+{{/* Wiki links: [[Page]] or [[Page|label]] → [label](/page-url/) */}}
+{{ $pattern := `\[\[([^\]|]+)(?:\|([^\]]+))?\]\]` }}
+{{ $matches := findRESubmatch $pattern $raw }}
+{{ range $matches }}
+  {{ $full := index . 0 }}
+  {{ $target := trim (index . 1) " " }}
+  {{ $display := trim (index . 2) " " }}
+  {{ $linkText := $target }}
+  {{ if $display }}{{ $linkText = $display }}{{ end }}
+  {{ $found := where $page.Site.RegularPages "Title" $target }}
+  {{ if not $found }}
+    {{ range $page.Site.RegularPages }}
+      {{ if and .File (eq .File.ContentBaseName $target) }}{{ $found = slice . }}{{ break }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if $found }}
+    {{ $url := (index $found 0).RelPermalink }}
+    {{ $link := printf "[%s](%s)" $linkText $url }}
+    {{ $raw = replace $raw $full $link 1 }}
+  {{ end }}
+{{ end }}
+{{ $html := $raw | markdownify }}
+{{ $html = replaceRE "==([^=]+)==" "<mark class=\"highlight\">$1</mark>" $html }}
+{{/* External links open in new tab (markdownify string doesn't use render hooks) */}}
+{{ $html = replaceRE `<a href="(https?://[^"]*)"([^>]*)>` `<a href="$1" target="_blank" rel="noopener noreferrer"$2>` $html }}
+{{/* Prevent script tags in content from breaking the page (close tag exposes next script as text) */}}
+{{ $html = replace $html "<script>" "&lt;script&gt;" }}
+{{ $html = replace $html "</script>" "&lt;/script&gt;" }}
+{{ $html | safeHTML }}

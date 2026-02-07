@@ -12,7 +12,7 @@ Git needs to authenticate to push. Do this **once** so Cursor/the agent can run 
 
 ## 2. Store the token in this project only
 
-In your Blog folder, create a file named **`.env`** (no other name) with one line:
+In your project folder, create a file named **`.env`** (no other name) with one line:
 
 ```bash
 GITHUB_TOKEN=ghp_your_token_here

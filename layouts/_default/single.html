@@ -13,10 +13,10 @@
     </aside>
     {{ end }}
     <div class="post-content">
-        <h2 class="page-title">{{ .Title }}</h2>
+        <h2 class="page-title">{{ partial "page-title.html" . }}</h2>
 
         <article>
-            {{ partial "highlight-content.html" (dict "Content" .Content) }}
+            {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
         </article>
 
         <p class="post-date">{{ .Date.Format "2006-01-02" }}</p>

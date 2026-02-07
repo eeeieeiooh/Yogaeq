@@ -1,0 +1,35 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main class="library-single">
+    <div class="library-single-meta">
+        <h2 class="page-title">{{ partial "page-title.html" . }}</h2>
+        {{ with .Date }}<time class="library-single-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+    </div>
+    {{ if .Content }}
+    <article>
+        {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
+    </article>
+    {{ end }}
+    <div class="back-link">
+        <a class="arrow-link" href="/practices/">← Practices</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <a href="/about/">Info</a>
+    <span class="sep">·</span>
+    <a href="/library/">Library</a>
+    <span class="sep">·</span>
+    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
+    <span class="sep">·</span>
+    <a href="/practices/">Practices</a>
+    <span class="sep">·</span>
+    <a href="/poetry/">Poetry</a>
+    <span class="sep">·</span>
+    <a href="/newsletters/">Newsletters</a>
+</footer>
+{{ end }}

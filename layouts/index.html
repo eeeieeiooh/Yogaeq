@@ -6,7 +6,10 @@
 
 <main>
     <ul class="posts-list">
-        {{ $posts := where .Site.RegularPages "Type" "posts" }}
+        {{ $now := now }}
+        {{ $section2026 := .Site.GetPage "posts/2026" }}
+        {{ $posts := cond $section2026 $section2026.RegularPages slice }}
+        {{ $posts = where $posts "Date" "le" $now }}
         {{ $total := len $posts }}
         {{ $limit := default 11 .Site.Params.postsLimit }}
         {{ $show := $posts.ByDate.Reverse }}
@@ -16,24 +19,23 @@
         {{ range $index, $post := $show }}
         <li>
             <span class="post-number">{{ sub $total $index }}.</span>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
         </li>
         {{ end }}
         <li class="posts-more">
-            <span class="post-number"><a class="arrow-link" href="/posts/">→</a></span>
+            {{ with (index $show 0) }}<span class="post-number"><a class="arrow-link" href="{{ .RelPermalink }}">→</a></span>{{ end }}
         </li>
     </ul>
+    <p class="start-promo"><a href="/start/">How to read this site →</a></p>
 </main>
 
-{{ partial "subscribe-form.html" . }}
-
 <footer class="site-footer">
+    <a href="/start/">Start</a>
+    <span class="sep">·</span>
+    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
+    <span class="sep">·</span>
+    {{ with .Site.GetPage "section/practices" }}<a href="{{ .Permalink }}">Practices</a>{{ else }}<a href="/practices/">Practices</a>{{ end }}
+    <span class="sep">·</span>
     <a href="/about/">Info</a>
-    <span class="sep">·</span>
-    <a href="/tags/">Tags</a>
-    <span class="sep">·</span>
-    <a href="/photos/">Photos</a>
-    <span class="sep">·</span>
-    <a href="/index.xml">RSS</a>
 </footer>
 {{ end }}

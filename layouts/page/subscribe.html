@@ -1,0 +1,22 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main>
+    <h2 class="page-title">{{ .Title }}</h2>
+
+    {{ if .Content }}
+    <article>
+        {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
+    </article>
+    {{ end }}
+
+    {{ partial "subscribe-form.html" . }}
+
+    <div class="back-link">
+        <a class="arrow-link" href="/">←</a>
+    </div>
+</main>
+{{ end }}
