@@ -36,11 +36,16 @@ jobs:
           extended: true
       - name: Show Hugo version
         run: hugo version
+      - name: Debug — repo contents
+        run: |
+          echo "=== Repo root ==="
+          ls -la
+          echo "=== yogaeq (if present) ==="
+          ls yogaeq 2>/dev/null || echo "(yogaeq not found)"
       - name: Verify content dir (hugo.toml contentDir = yogaeq)
         run: |
-          ls -la
           test -d yogaeq || (echo "ERROR: yogaeq/ missing (contentDir in hugo.toml)" && exit 1)
-          echo "yogaeq/ exists:" && ls yogaeq/
+          echo "yogaeq/ OK" && ls yogaeq/
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
@@ -50,10 +55,13 @@ jobs:
           HUGO_ENV: production
           HUGO_BASEURL: "https://yogaeq.com/"
         run: |
-          hugo --minify --baseURL "${HUGO_BASEURL}" --log 2>&1 || (echo "Hugo build failed with exit code $?" && exit 1)
+          hugo --minify --baseURL "${HUGO_BASEURL}" 2>&1
+          e=$?
+          if [ "$e" -ne 0 ]; then echo "FAILED: Hugo exited with $e"; exit 1; fi
       - name: Verify CNAME for custom domain
         run: |
-          test -f public/CNAME && cat public/CNAME || (echo "Missing public/CNAME" && exit 1)
+          test -f public/CNAME || (echo "FAILED: Missing public/CNAME"; exit 1)
+          echo "CNAME OK:" && cat public/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
