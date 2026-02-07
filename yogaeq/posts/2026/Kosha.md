@@ -5,7 +5,11 @@ tags:
 title: The Bodys
 draft: false
 ---
-The five sheaths of body.
+Translation: 'Five Sheaths'
+
+Pancha Kosha are the five sheaths of obstructing us from being [[Awareness]].
+
+
 
 Bliss Body
 

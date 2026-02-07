@@ -21,6 +21,15 @@ Its an attempt consistently bettering ourselves for humanity while remaining at 
 
 But please note, you do not need to know anything about yoga to practice. 
 
+Why Me? 
+
+Fascinated by the study of [[Breathe]] and how we are intimitately tied. 
+
+Im a long time meditator and yoga Practitioner. 
+
+Deciphering the abstract concepts of yoga and putting them in terms for a westener. 
+
+
 ---
 
 ## Posts by year

@@ -1,6 +1,6 @@
 baseURL = "https://yogaeq.com/"
 languageCode = "en-us"
-title = "yogaeq"
+title = "yogaEQ"
 contentDir = "yogaeq"
 
 [module]

@@ -1,7 +1,7 @@
 ---
 date: 2026-02-07
 draft: false
-title: Practice
+title: The Goal
 ---
 
 The Goal of Yoga

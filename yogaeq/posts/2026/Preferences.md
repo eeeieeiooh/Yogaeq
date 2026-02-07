@@ -5,4 +5,8 @@ tags:
 title: Preferences
 draft: false
 ---
-Preference for luxury. 
+Be a good person and this world will be good to you. 
+
+Don't be greedy. 
+
+Perform your duty. 

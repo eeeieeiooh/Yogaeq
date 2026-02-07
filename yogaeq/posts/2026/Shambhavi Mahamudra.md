@@ -2,7 +2,7 @@
 date: 2026-02-03
 tags:
   - Practice
-title: Pranayama
+title: Shambhavi Mahamudra
 draft: false
 ---
 > You don't really have to do anything, you just have to maintain the space. There are other kinds of practices which you do to build the system to another level. This practice is concentration. – Sadhguru

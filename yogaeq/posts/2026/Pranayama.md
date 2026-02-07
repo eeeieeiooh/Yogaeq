@@ -6,3 +6,4 @@ title: Pranayama
 draft: false
 ---
 
+English Translation: 'Breathing Exercises'
