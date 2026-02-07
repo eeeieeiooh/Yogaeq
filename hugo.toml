@@ -1,17 +1,17 @@
-baseURL = "https://yogaiq.example.com/"
+baseURL = "https://yogaeq.com/"
 languageCode = "en-us"
-title = "YogaIQ"
-contentDir = "YogaIQ"
+title = "yogaeq"
+contentDir = "yogaeq"
 
 [module]
   [[module.mounts]]
-    source = "YogaIQ/images"
+    source = "yogaeq/images"
     target = "static/images"
   [[module.mounts]]
-    source = "YogaIQ/asanas/images"
+    source = "yogaeq/asanas/images"
     target = "static/asanas/images"
   [[module.mounts]]
-    source = "YogaIQ/practices/images"
+    source = "yogaeq/practices/images"
     target = "static/practices/images"
 
 [params]

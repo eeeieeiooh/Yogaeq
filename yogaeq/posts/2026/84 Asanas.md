@@ -1,6 +1,7 @@
 ---
 date: 2026-02-07
 draft: false
+title: 84 Asanas
 ---
 
 1. [[Shashankasana]] - Hare Pose / Child's Pose

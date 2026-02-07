@@ -2,7 +2,7 @@
 date: 2026-02-03
 tags:
   - Concept
-title: Compulsive
+title: Compulsion
 draft: false
 ---
 Do not carried around by compulsions. 

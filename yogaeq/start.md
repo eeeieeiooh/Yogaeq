@@ -4,7 +4,7 @@ date: 2025-01-01
 type: "page"
 ---
 
-Welcome. Here’s how to read everything on YogaIQ.
+Welcome. Here’s how to read everything on yogaeq.
 
 **Posts** — The main writing: notes, reflections, and practice. Newest first. [Read posts →](/posts/)
 

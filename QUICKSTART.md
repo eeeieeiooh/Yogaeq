@@ -48,7 +48,7 @@ hugo new content/posts/my-first-post.md
 ```
 
 ### Option B: Create file manually
-Create `YogaIQ/posts/2026/my-first-post.md` with (title comes from the filename):
+Create `yogaeq/posts/2026/my-first-post.md` with (title comes from the filename):
 
 ```markdown
 ---
