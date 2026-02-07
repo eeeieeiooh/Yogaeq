@@ -8,7 +8,7 @@
     <ul class="posts-list">
         {{ $now := now }}
         {{ $section2026 := .Site.GetPage "posts/2026" }}
-        {{ $posts := cond $section2026 $section2026.RegularPages slice }}
+        {{ $posts := cond (ne $section2026 nil) $section2026.RegularPages slice }}
         {{ $posts = where $posts "Date" "le" $now }}
         {{ $total := len $posts }}
         {{ $limit := default 11 .Site.Params.postsLimit }}
