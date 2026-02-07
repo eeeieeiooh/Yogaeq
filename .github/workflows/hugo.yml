@@ -58,6 +58,10 @@ jobs:
           hugo --minify --baseURL "${HUGO_BASEURL}" 2>&1
           e=$?
           if [ "$e" -ne 0 ]; then echo "FAILED: Hugo exited with $e"; exit 1; fi
+      - name: Ensure CNAME for custom domain
+        run: |
+          cp static/CNAME public/CNAME
+          cat public/CNAME
       - name: Verify CNAME for custom domain
         run: |
           test -f public/CNAME || (echo "FAILED: Missing public/CNAME"; exit 1)
