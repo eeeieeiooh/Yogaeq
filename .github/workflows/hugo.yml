@@ -36,16 +36,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Debug — repo contents
-        run: |
-          echo "=== Repo root ==="
-          ls -la
-          echo "=== yogaeq (if present) ==="
-          ls yogaeq 2>/dev/null || echo "(yogaeq not found)"
-      - name: Verify content dir (hugo.toml contentDir = yogaeq)
-        run: |
-          test -d yogaeq || (echo "ERROR: yogaeq/ missing (contentDir in hugo.toml)" && exit 1)
-          echo "yogaeq/ OK" && ls yogaeq/
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
@@ -59,13 +49,7 @@ jobs:
           e=$?
           if [ "$e" -ne 0 ]; then echo "FAILED: Hugo exited with $e"; exit 1; fi
       - name: Ensure CNAME for custom domain
-        run: |
-          cp static/CNAME public/CNAME
-          cat public/CNAME
-      - name: Verify CNAME for custom domain
-        run: |
-          test -f public/CNAME || (echo "FAILED: Missing public/CNAME"; exit 1)
-          echo "CNAME OK:" && cat public/CNAME
+        run: cp static/CNAME public/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
