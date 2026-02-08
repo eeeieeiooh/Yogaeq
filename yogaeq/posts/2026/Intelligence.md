@@ -5,7 +5,16 @@ tags:
 title: Intelligence
 draft: false
 ---
-Intelligence goes beyond the mind. 
+Intelligence goes beyond the mind. [[Intellect]] is what we describe as IQ in the west. The ability to divide. 
+
+Your body has a natural intelligence to it, and you should interfere with it as little as
+possible (loose clothing, no overeating, minimizing smoking, no drinking)
+
+Go out into nature
+and appreciate the solitude. Quiet your inner being and listen.
+
+
+
 
 You're life goes in accordance with your intelligence. 
 

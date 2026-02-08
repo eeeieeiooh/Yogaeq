@@ -10,7 +10,7 @@ Welcome. Here’s how to read everything on yogaeq.
 
 **Library** — Books and texts I’m reading or returning to, with short notes. [Browse library →](/library/)
 
-**Asanas** — Yoga poses: notes, alignment, and practice. [Browse asanas →](/asanas/)
+**Asanas** — Yoga poses: notes, alignment, and practice. [Browse asanas →](/yogaasanas/)
 
 **Practices** — Yoga flows and sequences. [Browse practices →](/practices/)
 

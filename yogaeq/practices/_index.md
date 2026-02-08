@@ -1,6 +1,7 @@
 ---
 title: Practices
 description: Yoga flows and sequences.
+permalink: /practices/
 ---
 
-Flows and sequences to practice. Add a new .md file here for each flow; the filename is the practice name.
+Sequences to practice. 

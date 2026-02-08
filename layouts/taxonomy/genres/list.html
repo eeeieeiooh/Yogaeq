@@ -15,7 +15,7 @@
         {{ end }}
     </ul>
     <div class="back-link">
-        <a class="arrow-link" href="/library/">← Library</a>
+        <a class="arrow-link" href="/">←</a>
     </div>
 </main>
 
@@ -26,6 +26,8 @@
     <span class="sep">·</span>
     <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
     <span class="sep">·</span>
-    <a href="/practices/">Practices</a>
+    <a href="{{ partial "practices-section-url.html" . }}">Practices</a>
+    <span class="sep">·</span>
+    <a href="{{ partial "people-section-url.html" . }}">People</a>
 </footer>
 {{ end }}

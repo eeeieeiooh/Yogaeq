@@ -5,4 +5,4 @@ title: Imbalances
 ---
 Imbalances
 
-[[The Goal]] of yoga is not necessarily the body.
+[[The Goal of Yoga]] of yoga is not necessarily the body.

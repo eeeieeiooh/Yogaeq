@@ -2,7 +2,7 @@
 date: 2026-02-03
 tags:
   - Concept
-title: Mantras
+title: Shakti
 draft: false
 ---
 

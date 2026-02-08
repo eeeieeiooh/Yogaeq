@@ -23,19 +23,16 @@
         </li>
         {{ end }}
         <li class="posts-more">
-            {{ with (index $show 0) }}<span class="post-number"><a class="arrow-link" href="{{ .RelPermalink }}">→</a></span>{{ end }}
+            <span class="post-number"><a class="arrow-link" href="/posts/">→</a></span>
         </li>
     </ul>
-    <p class="start-promo"><a href="/start/">How to read this site →</a></p>
 </main>
 
 <footer class="site-footer">
-    <a href="/start/">Start</a>
-    <span class="sep">·</span>
-    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
-    <span class="sep">·</span>
-    {{ with .Site.GetPage "section/practices" }}<a href="{{ .Permalink }}">Practices</a>{{ else }}<a href="/practices/">Practices</a>{{ end }}
-    <span class="sep">·</span>
     <a href="/about/">Info</a>
+    <span class="sep">·</span>
+    <a href="{{ partial "practices-section-url.html" . }}">Practices</a>
+    <span class="sep">·</span>
+    <a href="/newsletters/">Newsletter</a>
 </footer>
 {{ end }}

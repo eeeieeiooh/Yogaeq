@@ -1,0 +1,29 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main class="library-page">
+    <h2 class="page-title">{{ .Title }}</h2>
+
+    {{ if .Content }}
+    <article class="library-intro">
+        {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
+    </article>
+    {{ end }}
+
+    <ul class="posts-list library-list">
+        {{ $people := .Pages.ByTitle }}
+        {{ range $people }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
+        </li>
+        {{ end }}
+    </ul>
+
+    <div class="back-link">
+        <a class="arrow-link" href="/">←</a>
+    </div>
+</main>
+{{ end }}

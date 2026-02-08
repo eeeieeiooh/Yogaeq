@@ -2,16 +2,15 @@
 {{ $raw := default "" .RawContent }}
 {{/* Ensure --- (horizontal rule) is followed by a blank line so text below doesn't cause parse errors */}}
 {{ $raw = replaceRE `(\n---\s*\n)([^\n])` "$1\n$2" $raw }}
-{{/* Obsidian-style images: ![[file.jpg]] or ![[file.jpg|alt text]] → section images or /images/ */}}
+{{/* Obsidian-style images: ![[file.jpg]] or ![[file.jpg|alt text]] → /images/ */}}
 {{ $imgPattern := `!\[\[([^\]|]+)(?:\|([^\]]+))?\]\]` }}
 {{ range findRESubmatch $imgPattern $raw }}
   {{ $full := index . 0 }}
   {{ $file := trim (index . 1) " " }}
   {{ $alt := trim (index . 2) " " }}
-  {{ $path := "/images/" }}
-  {{ if eq $page.Section "asanas" }}{{ $path = "/asanas/images/" }}{{ else if eq $page.Section "practices" }}{{ $path = "/practices/images/" }}{{ end }}
-  {{ $path = printf "%s%s" $path (replace $file " " "%20") }}
-  {{ $img := printf "![%s](%s)" $alt $path }}
+  {{ $path := printf "/images/%s" (replace $file " " "%20") }}
+  {{/* Link to image so it opens on a separate page */}}
+  {{ $img := printf "[![%s](%s)](%s)" $alt $path $path }}
   {{ $raw = replace $raw $full $img 1 }}
 {{ end }}
 {{/* Wiki links: [[Page]] or [[Page|label]] → [label](/page-url/) */}}
@@ -37,8 +36,12 @@
 {{ end }}
 {{ $html := $raw | markdownify }}
 {{ $html = replaceRE "==([^=]+)==" "<mark class=\"highlight\">$1</mark>" $html }}
-{{/* External links open in new tab (markdownify string doesn't use render hooks) */}}
+{{/* Image links open in new tab (separate page) */}}
+{{ $html = replaceRE `<a href="(/images/[^"]*)"([^>]*)>` `<a href="$1" target="_blank" rel="noopener noreferrer" class="image-link"$2>` $html }}
+{{/* External links open in new tab; same-site links stay in tab so back button works */}}
 {{ $html = replaceRE `<a href="(https?://[^"]*)"([^>]*)>` `<a href="$1" target="_blank" rel="noopener noreferrer"$2>` $html }}
+{{ $base := strings.TrimSuffix "/" .Page.Site.BaseURL }}
+{{ if $base }}{{ $baseEsc := replace $base "." "\\." }}{{ $html = replaceRE (printf `<a href="(%s[^"]*)" target="_blank" rel="noopener noreferrer"([^>]*)>` $baseEsc) `<a href="$1"$2>` $html }}{{ end }}
 {{/* Prevent script tags in content from breaking the page (close tag exposes next script as text) */}}
 {{ $html = replace $html "<script>" "&lt;script&gt;" }}
 {{ $html = replace $html "</script>" "&lt;/script&gt;" }}

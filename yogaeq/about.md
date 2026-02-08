@@ -29,6 +29,13 @@ Im a long time meditator and yoga Practitioner.
 
 Deciphering the abstract concepts of yoga and putting them in terms for a westener. 
 
+Sometimes it feels like we consume information without remembering it. Organization is part of yoga. 
+
+You do not need to immerse yourself in Hinduism or Mantras to reap the benefits of Yoga. Stillness and Awareness is what is required. Practice through Sadhana.
+
+Some people are naturally more receptive. 
+
+[How to read this site →](/start/)
 
 ---
 

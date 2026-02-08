@@ -257,6 +257,8 @@
             text-decoration: underline;
             text-decoration-style: dotted;
             text-underline-offset: 3px;
+            margin-right: 0;
+            padding-right: 0;
         }
 
         article a:hover {
@@ -273,7 +275,13 @@
         }
 
         /* Inline post images: same width as content, spaced like paragraphs */
-        article img {
+        .image-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        article img,
+        .library-single img {
             max-width: 100%;
             height: auto;
             display: block;
@@ -323,7 +331,13 @@
             position: fixed;
             left: calc(50% - 21em - 11em - 2.5rem);
             width: 11em;
-            top: 2rem;
+            top: 5.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.2s;
+        }
+
+        main.post-with-outline.outline-ready .post-outline {
+            opacity: 1;
         }
 
         .outline-nav {
@@ -359,12 +373,8 @@
         /* Hide outline after user scrolls down */
         main.post-with-outline.scrolled .post-outline {
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-
-        .post-outline {
-            transition: opacity 0.25s ease;
         }
 
         @media (max-width: 700px) {
@@ -409,6 +419,12 @@
 
         .library-intro {
             margin-bottom: 2rem;
+        }
+
+        .asanas-count {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 1rem;
         }
 
         .quotes-intro {
@@ -497,6 +513,18 @@
             display: block;
         }
 
+        .library-single-meta-line {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.25rem;
+        }
+
+        .library-single-duration {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.25rem;
+        }
+
         .video-embed {
             margin: 1.5rem 0;
             max-width: 100%;
@@ -517,6 +545,11 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        .spotify-embed {
+            margin: 1.5rem 0;
+            max-width: 100%;
         }
 
         .things-i-love-link {
@@ -573,5 +606,36 @@
 <body>
     {{ block "main" . }}{{ end }}
     <script src="{{ "script.js" | relURL }}"></script>
+    <script>
+        (function() {
+            try {
+                var main = document.querySelector('main.post-with-outline');
+                if (!main) return;
+                var outline = main.querySelector('.post-outline');
+                if (!outline) return;
+
+                var heading = document.querySelector('.post-content .page-title');
+                function alignOutline() {
+                    if (heading && outline) {
+                        var top = heading.getBoundingClientRect().top;
+                        outline.style.top = Math.max(8, top) + 'px';
+                    }
+                }
+                if (heading) {
+                    alignOutline();
+                    window.addEventListener('resize', alignOutline);
+                    window.addEventListener('load', alignOutline);
+                }
+                main.classList.add('outline-ready');
+
+                var scrollThreshold = 80;
+                function update() {
+                    if (main) main.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+                }
+                window.addEventListener('scroll', update, { passive: true });
+                update();
+            } catch (err) {}
+        })();
+    </script>
 </body>
 </html>

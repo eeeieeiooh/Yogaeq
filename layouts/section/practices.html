@@ -18,7 +18,8 @@
         {{ range $flows }}
         <li>
             <a href="{{ .RelPermalink }}">{{ partial "page-title.html" . }}</a>
-            {{ with .Date }}<span class="library-list-meta"> · {{ .Format "Jan 2006" }}</span>{{ end }}
+            {{ with .Params.type }}<span class="library-list-meta"> · {{ . }}</span>{{ end }}
+            {{ with .Params.duration }}<span class="library-list-meta"> · {{ . }}</span>{{ end }}
         </li>
         {{ end }}
     </ul>
@@ -27,18 +28,4 @@
         <a class="arrow-link" href="/">←</a>
     </div>
 </main>
-
-<footer class="site-footer">
-    <a href="/about/">Info</a>
-    <span class="sep">·</span>
-    <a href="/library/">Library</a>
-    <span class="sep">·</span>
-    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
-    <span class="sep">·</span>
-    <a href="/practices/">Practices</a>
-    <span class="sep">·</span>
-    <a href="/poetry/">Poetry</a>
-    <span class="sep">·</span>
-    <a href="/newsletters/">Newsletters</a>
-</footer>
 {{ end }}

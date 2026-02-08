@@ -31,12 +31,14 @@ sudo snap install hugo
    ```bash
    cd path/to/blog
    ```
-3. Run Hugo:
+3. Run Hugo (use this so edits to `.md` files update instantly):
    ```bash
-   hugo server
+   hugo server --poll 500ms --disableFastRender
    ```
 4. Open http://localhost:1313 in your browser
 5. You should see your blog! 🎉
+
+   **Changes not showing?** Use the command above. `--poll 500ms` makes Hugo watch file changes reliably; `--disableFastRender` forces a full refresh so edits to content in `yogaeq/` show up right away.
 
 ---
 

@@ -1,0 +1,7 @@
+---
+date: 2026-02-07
+draft: false
+title: One-Pointedness
+tags:
+---
+'The Foundation of all is uncreated, uncompounded, independent, beyond mental concept and verbal definition. Neither the term Sangsara nor the term Nirvana can be applied to It. To realize It is to attain Buddhahood. Not to realize It IS to wander in the Sangsara. 'Not knowing the Foundation, beings aforetime erred. They were overwhelmed by the darkness of unconsciousness, whence sprang igno rance and error. Immersed in error and obscured by ignorance, the knower" became bewildered and afraid. Then arose the concepts 'I" and "Others", together with hatred. When these had grown strong, there was born an unbroken current of sangsaric evolution. Then the "five poisons" of the obscuring passions, lust, anger, selfishness, delusion, and jealousy, flourished, and there was produced an intermin able chain of evil karma. 'The root-source of error among sentient beings is thus unconscious ignorance. And, in virtue of the power of the Good-Wishes of Me, the Adi-Buddha, may each of them realize the radiant, immaculate mind, innate in every living thing.' From The Good-Wishes of the All-Good Buddha Samanta-Bhadia (Lama Kazi Dawa-Samdup's Translation) !

@@ -1,5 +1,1 @@
-{{- with .Site.GetPage "section/asanas" -}}
-{{- .Permalink -}}
-{{- else -}}
-/asanas/
-{{- end -}}
+{{- with .Site.GetPage "section" "asanas" -}}{{ .RelPermalink }}{{- else -}}{{- "/yogaasanas/" | relLangURL -}}{{- end -}}

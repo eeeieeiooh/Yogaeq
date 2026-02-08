@@ -1,0 +1,25 @@
+{{ $arg0 := .Get 0 }}
+{{ $arg1 := .Get 1 }}
+{{ $type := "playlist" }}
+{{ $id := "" }}
+{{ if $arg1 }}
+  {{ $type = $arg0 }}
+  {{ $id = $arg1 }}
+{{ else }}
+  {{ if hasPrefix $arg0 "https://open.spotify.com/" }}
+    {{ $path := replace $arg0 "https://open.spotify.com/" "" }}
+    {{ $parts := split $path "/" }}
+    {{ if ge (len $parts) 2 }}
+      {{ $type = index $parts 0 }}
+      {{ $id = index $parts 1 }}
+      {{ $id = (index (split $id "?") 0) }}
+    {{ end }}
+  {{ else }}
+    {{ $id = $arg0 }}
+  {{ end }}
+{{ end }}
+{{ if $id }}
+<div class="spotify-embed">
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/{{ $type }}/{{ $id }}?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify"></iframe>
+</div>
+{{ end }}

@@ -1,0 +1,4 @@
+{{- $dest := .Destination | safeURL -}}
+<a href="{{ $dest }}" class="image-link" target="_blank" rel="noopener noreferrer" aria-label="Open image in new page">
+  <img src="{{ $dest }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}>
+</a>

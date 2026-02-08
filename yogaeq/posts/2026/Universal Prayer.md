@@ -2,7 +2,7 @@
 date: 2026-02-03
 tags:
   - Mantra
-title: Mantras
+title: Universal Prayer
 draft: false
 ---
 

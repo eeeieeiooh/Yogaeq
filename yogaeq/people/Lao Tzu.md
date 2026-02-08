@@ -1,0 +1,8 @@
+---
+title: Lao Tzu
+---
+> Turning back is how the way moves 
+> Weakness is the means the way employs 
+> The myriad creatures in the world are born from something
+> And something is born from nothing – Lao Tzu
+

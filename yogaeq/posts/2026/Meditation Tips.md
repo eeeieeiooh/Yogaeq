@@ -3,14 +3,10 @@ date: 2026-02-07
 draft: false
 title: Meditation Tips
 ---
-Meditation is a tricky.
 
-Here are some tips:
-
-## Understand the 'Goal'
+## The 'Goal'
 
 Stillness is the essential goal.
-
 
 ## Posture
 
@@ -25,4 +21,3 @@ It's not easy. Work towards it.
 
 - Sound: Bowls, Gongs, Chanting
 - Chanting: Hari Krishna, Om Padme OM
-- 

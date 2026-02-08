@@ -9,4 +9,4 @@ draft: false
 
 Outside forces cannot define who you are.
 
-Understand [[The Goal]] of Yoga. 
+Understand [[The Goal of Yoga]] of Yoga. 

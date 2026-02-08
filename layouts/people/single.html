@@ -1,0 +1,20 @@
+{{ define "main" }}
+<header>
+    <h1 class="site-title"><a href="/">{{ .Site.Title }}</a></h1>
+    <p class="rule">—</p>
+</header>
+
+<main class="library-single">
+    <div class="library-single-meta">
+        <h2 class="page-title">{{ partial "page-title.html" . }}</h2>
+    </div>
+    {{ if .Content }}
+    <article>
+        {{ partial "render-content.html" (dict "RawContent" .RawContent "Page" .) }}
+    </article>
+    {{ end }}
+    <div class="back-link">
+        <a class="arrow-link" href="{{ .CurrentSection.Permalink }}">←</a>
+    </div>
+</main>
+{{ end }}

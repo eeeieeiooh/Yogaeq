@@ -7,7 +7,11 @@
 <main class="library-single">
     <div class="library-single-meta">
         <h2 class="page-title">{{ partial "page-title.html" . }}</h2>
-        {{ with .Date }}<time class="library-single-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+        {{ if or .Params.type .Params.duration }}
+        <p class="library-single-meta-line">
+            {{ with .Params.type }}{{ . }}{{ end }}{{ if and .Params.type .Params.duration }} · {{ end }}{{ with .Params.duration }}{{ . }}{{ end }}
+        </p>
+        {{ end }}
     </div>
     {{ if .Content }}
     <article>
@@ -15,21 +19,7 @@
     </article>
     {{ end }}
     <div class="back-link">
-        <a class="arrow-link" href="/practices/">← Practices</a>
+        <a class="arrow-link" href="/">←</a>
     </div>
 </main>
-
-<footer class="site-footer">
-    <a href="/about/">Info</a>
-    <span class="sep">·</span>
-    <a href="/library/">Library</a>
-    <span class="sep">·</span>
-    <a href="{{ partial "asanas-section-url.html" . }}">Asanas</a>
-    <span class="sep">·</span>
-    <a href="/practices/">Practices</a>
-    <span class="sep">·</span>
-    <a href="/poetry/">Poetry</a>
-    <span class="sep">·</span>
-    <a href="/newsletters/">Newsletters</a>
-</footer>
 {{ end }}
